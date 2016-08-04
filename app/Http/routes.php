@@ -69,11 +69,11 @@ Route::post('/test/insert',function(){
 	echo '用户数据插入';
 });*/
 //带参数的路由
-Route::get('/goods/{name}-{id}',function($name,$id){
+/*Route::get('/goods/{name}-{id}',function($name,$id){
 	echo $name;
 	echo $id;//如果不传参数，就会报错
 	//参数类型约束,这是基本路由，不常用。
-})->where('id','\d+');//限制参数类型，一般用正则来约束
+})->where('id','\d+');*///限制参数类型，一般用正则来约束
 //别名路由
 /*
 Route::get('/admin/user/add',[
@@ -93,19 +93,19 @@ Route::get('/admin/user/add',[
 })->middleware('login');//在中间件那里注册时什么名字括号里就写什么名字*/
 
 //路由组 配合使用中间件
-Route::group(['middleware'=>'login'],function(){//[]这个表示数组，写中间件，以后会讲。中间件在程序中起到关卡、过滤的作用，
+/*Route::group(['middleware'=>'login'],function(){//[]这个表示数组，写中间件，以后会讲。中间件在程序中起到关卡、过滤的作用，
 	//是每次请求都要验证是否放行。如果不符合，就指定跳转到哪个页面。例如判断登录，例如检查站
 	//后台用户管理列表
 	Route::get('/admin/user',function(){
-		echo 'admin/user';
+		//echo 'admin/user';
 	});
 	//后台商品管理列表
-	Route::get('/admin/goods',function()){
-		echo 'admin/goods';
+	Route::get('/admin/goods',function(){
+		//echo 'admin/goods';
 	});
 	// Route::get('/admin/cate',function(){});
 	//后台...
-});	 
+});	 */
 //});
 
 //显示用户登录页面
@@ -115,11 +115,11 @@ Route::group(['middleware'=>'login'],function(){//[]这个表示数组，写中�
 
 //如何在报错的基础上，显示404页面给用户友好的体验度，在文件夹error里写个404页面，计算机出这个错误会自动找到404页面，计算机逻辑告诉他是路由的问题：没有这个路由关系，没有这个请求路径。
 //即需要他登录的页面
-Route::get('/login',function(){
-	echo '用户登录页面';
+/*Route::get('/login',function(){
+	//echo '用户登录页面';
 	abort(404);//抛出404,文本具体没有说
 }); 
-
+*/
 //csrf保护 测试
 //Route::get('/user/add',function(){
 // 	//显示模板
@@ -141,4 +141,25 @@ Route::get('/login',function(){
 // Route::resource('/user', 'UserController');
 
 //隐式控制器 路由
-Route::Controller('/test','TestController');
+//Route::Controller('/test','TestController');
+Route::Controller('/admins','UserController');
+//
+/*Route::get('/setcookie',function(){
+	//设置cookie
+	//Cookie::queue('name','iloveyou',1);//单位为分钟,不是秒
+	//Cookie::queue('id','110',1);
+	
+	return response('haha')->withCookie('uid',10,10);//10是值，10是分钟。
+responseText是ajax请求服务器，获取请求回来的内容，response()返回来的是个字符串。
+并且用withCookie()方法来设置cookie.
+
+});
+//Route::get('/getcookie',function(){
+	//读取cookie
+	//echo Cookie::get('id');//
+	//$request->cookie('name');//请求对象这个报错了，里边没有request
+	//echo Cookie::get('name','iloveyou',10);//单位为分钟
+//});
+
+//方法获取cookie
+Route::get('/getcookie','TestController@cookie');*/

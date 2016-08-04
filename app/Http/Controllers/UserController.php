@@ -15,8 +15,9 @@ class UserController extends Controller
 	* @return \Illuminate\Http\Response
 	*
 	*/
-	public function index(){
-		echo '用户列表页';
+	public function getIndex(){
+		//echo '用户列表页';
+		return view('layout.index');
 	}
 	 /**
      * Store a newly created resource in storage.
